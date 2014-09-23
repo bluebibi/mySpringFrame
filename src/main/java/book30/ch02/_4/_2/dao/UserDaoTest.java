@@ -24,7 +24,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
 import book30.ch02._4._2.domain.User;
-import book30.ch02._5._2._1.junit.JUnitTest;
+import book30.ch02._4._2.dao.UserDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="../test-applicationContext.xml")
@@ -44,7 +44,7 @@ public class UserDaoTest {
 	public void setUp() {
 		//List 2-23
 		//dao = new UserDao();
-		//DataSource dataSource = new SingleConnectionDataSource("jdbc:mysql://localhost/testdb", "spring", "book", true);
+		//DataSource dataSource = new SingleConnectionDataSource("jdbc:mysql://localhost/springbook?characterEncoding=UTF-8", "spring", "book", true);
 		//dao.setDataSource(dataSource);
 		testUserDao = dao;
 	}
