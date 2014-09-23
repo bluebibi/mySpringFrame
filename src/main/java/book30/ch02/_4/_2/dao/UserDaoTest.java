@@ -38,21 +38,16 @@ public class UserDaoTest {
 	private User user2;
 	private User user3;
 	
-	static UserDao testUserDao;
-	
 	@Before
 	public void setUp() {
 		//List 2-23
 		//dao = new UserDao();
 		//DataSource dataSource = new SingleConnectionDataSource("jdbc:mysql://localhost/springbook?characterEncoding=UTF-8", "spring", "book", true);
 		//dao.setDataSource(dataSource);
-		testUserDao = dao;
 	}
 
 	@Test
 	public void addAndGet() throws SQLException, ClassNotFoundException {
-		assertThat(testUserDao, either(is(nullValue(UserDao.class))).or(is(this.dao)));
-		
 		this.user1 = new User("gyumee", "박성철", "springno1");
 		this.user2 = new User("leegw700", "이길원", "springno2");
 		
@@ -76,8 +71,6 @@ public class UserDaoTest {
 	
 	@Test
 	public void count() throws SQLException, ClassNotFoundException {
-		assertThat(testUserDao, either(is(nullValue(UserDao.class))).or(is(this.dao)));
-				
 		this.user1 = new User("gyumee", "박성철", "springno1");
 		this.user2 = new User("leegw700", "이길원", "springno2");
 		this.user3 = new User("bumjin", "박범진", "springno3");
