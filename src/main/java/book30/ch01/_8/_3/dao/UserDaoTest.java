@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import book30.ch01._8._1.dao.UserDao;
 import book30.ch01.domain.User;
 
 
@@ -14,13 +15,13 @@ public class UserDaoTest {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		//class
-		ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+		//ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
 		//xml
-		//ApplicationContext context = new GenericXmlApplicationContext("book30/ch01/_8/_3/applicationContext.xml");
+		ApplicationContext context = new GenericXmlApplicationContext("book30/ch01/_8/_3/applicationContext.xml");
 		UserDao dao = context.getBean("userDao", UserDao.class);
 
 		User user = new User();
-		user.setId("whiteship");
+		user.setId("whites2hip");
 		user.setName("백기선");
 		user.setPassword("married");
 		
@@ -33,6 +34,6 @@ public class UserDaoTest {
 		
 		System.out.println(user2.getPassword());
 		
-		System.out.println(user2.getId() + "조회 성공");	
+		System.out.println(user2.getId() + "조회 성공");
 	}
 }

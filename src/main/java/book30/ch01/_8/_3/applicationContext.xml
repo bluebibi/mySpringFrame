@@ -1,8 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml  version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-	
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:task="http://www.springframework.org/schema/task"
+ xmlns:util="http://www.springframework.org/schema/util"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<task:annotation-driven />
+
+    	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost/springbook" />
@@ -13,5 +22,7 @@
 	<bean id="userDao" class="book30.ch01._8._3.dao.UserDao">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+    <bean id="demoServiceBasicUsageFixedDelay" class="book30.ch01._8._3.dao.DemoServiceBasicUsageFixedDelay"></bean>
 	
 </beans>

@@ -1,7 +1,6 @@
 package book30.ch11._2._2.test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertArrayEquals;
@@ -49,6 +48,22 @@ public class DaoTest {
 
 		//numMembers		
 		assertThat(memberService.numMembers(), is(4));
+	}
+	
+	@Test
+	public void addAndGetKeyTest() {
+		int id1 = memberService.addMemberAndGetKey1("001", "GilDong Hong", 90);
+		Member m1 = memberService.getMember1("001");
+		Member m1_2 = memberService.getMemberById1(id1);
+		assertThat(m1.getId(), is(id1));
+		assertThat(m1_2.getId(), is(id1));		
+		
+		
+		int id2 = memberService.addMemberAndGetKey2("002", "ChulSoo Kim", 80);
+		Member m2 = memberService.getMember3("002");
+		Member m2_2 = memberService.getMemberById2(id2);
+		assertThat(m2.getId(), is(id2));
+		assertThat(m2_2.getId(), is(id2));
 	}
 	
 	@Test
