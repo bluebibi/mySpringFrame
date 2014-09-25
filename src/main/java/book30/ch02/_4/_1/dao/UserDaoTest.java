@@ -2,12 +2,15 @@ package book30.ch02._4._1.dao;
 
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.junit.Before;
@@ -23,17 +26,21 @@ public class UserDaoTest {
 	@Autowired
 	private ApplicationContext context;
 	//List 2-19
-	//@Autowired
-	//private UserDao dao;
 	
+	@Autowired
 	private UserDao dao;
+	
+	@Autowired
+	private DataSource dataSource;
+	
+	//private UserDao dao;
 	private User user1;
 	private User user2;
 	private User user3;
 	
 	@Before
 	public void setUp() {
-		this.dao = this.context.getBean("userDao", UserDao.class);
+		
 		System.out.println(this.context);
 		System.out.println(this);
 	}

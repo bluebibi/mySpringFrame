@@ -15,7 +15,7 @@ public class UserDao {
 		this.dataSource = dataSource;
 	}
 
-	public void add(User user) throws ClassNotFoundException, SQLException {
+	public void add(User user) throws ClassNotFoundException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		
@@ -29,7 +29,7 @@ public class UserDao {
 	
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw e;
+			System.out.println(e);
 		} finally {
 			if (ps != null) {
 				try {

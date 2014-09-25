@@ -11,6 +11,7 @@ public class CountingConnectionMaker implements ConnectionMaker {
 		this.realConnectionMaker = realConnectionMaker;
 	}
 	
+	@Override
 	public Connection makeConnection() throws ClassNotFoundException, SQLException {
 		this.counter++;
 		return realConnectionMaker.makeConnection();

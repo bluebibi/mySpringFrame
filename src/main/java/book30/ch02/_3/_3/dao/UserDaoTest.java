@@ -49,7 +49,7 @@ public class UserDaoTest {
 	
 	@Test
 	public void count() throws SQLException, ClassNotFoundException {
-		ApplicationContext context = new GenericXmlApplicationContext("book30/ch02/_3/_2/applicationContext.xml");
+		ApplicationContext context = new GenericXmlApplicationContext("book30/ch02/_3/_3/applicationContext.xml");
 
 		UserDao dao = context.getBean("userDao", UserDao.class);
 		
@@ -72,12 +72,12 @@ public class UserDaoTest {
 	
 	@Test(expected=EmptyResultDataAccessException.class)
 	public void getUserFailure() throws SQLException, ClassNotFoundException {
-		ApplicationContext context = new GenericXmlApplicationContext("book30/ch02/_3/_2/applicationContext.xml");
+		ApplicationContext context = new GenericXmlApplicationContext("book30/ch02/_3/_3/applicationContext.xml");
 		
 		UserDao dao = context.getBean("userDao", UserDao.class);
 		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
 		
-		dao.get("unknown_id");
+		dao.get("1111");
 	}
 }

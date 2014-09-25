@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 import book30.ch02.practice.dao.UserDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="../test-applicationContext.xml")
+@ContextConfiguration(locations="../applicationContext.xml")
 public class UserDaoTest {
 	@Autowired
 	private UserDao dao;

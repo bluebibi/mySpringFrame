@@ -17,12 +17,7 @@ public class UserDaoTest {
 
 	@Test
 	public void addAndGet() throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		//class
-		//ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
-		//xml
 		ApplicationContext context = new GenericXmlApplicationContext("book30/ch02/_3/_2/applicationContext.xml");
-		
 		UserDao dao = context.getBean("userDao", UserDao.class);
 
 		dao.deleteAll();

@@ -13,7 +13,7 @@ public class UserDaoTest {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
-		UserDao dao = context.getBean("userDao", UserDao.class);
+		UserDao dao = (UserDao)context.getBean("userDao");
 
 		User user = new User();
 		user.setId("whiteship");

@@ -21,24 +21,19 @@ public class UserDaoTest {
 	private User user3;
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws SQLException, ClassNotFoundException {
 		ApplicationContext context = new GenericXmlApplicationContext("book30/ch02/_3/_5/applicationContext.xml");
-
 		this.dao = context.getBean("userDao", UserDao.class);
+		
+		this.user1 = new User("gyumee", "박성철", "springno1");
+		this.user2 = new User("leegw700", "이길원", "springno2");
+		this.user3 = new User("bumjin", "박범진", "springno3");
+		this.dao.deleteAll();
 	}
 
 	@Test
 	public void addAndGet() throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		//class
-		//ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
-		//xml
-		
 
-		this.user1 = new User("gyumee", "박성철", "springno1");
-		this.user2 = new User("leegw700", "이길원", "springno2");
-		
-		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
 		
 		
@@ -58,12 +53,6 @@ public class UserDaoTest {
 	
 	@Test
 	public void count() throws SQLException, ClassNotFoundException {
-				
-		this.user1 = new User("gyumee", "박성철", "springno1");
-		this.user2 = new User("leegw700", "이길원", "springno2");
-		this.user3 = new User("bumjin", "박범진", "springno3");
-		
-		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
 		
 		dao.add(user1);
@@ -74,14 +63,5 @@ public class UserDaoTest {
 		
 		dao.add(user3);
 		assertThat(dao.getCount(), is(3));
-	}
-	
-	@Test(expected=EmptyResultDataAccessException.class)
-	public void getUserFailure() throws SQLException, ClassNotFoundException {
-		
-		dao.deleteAll();
-		assertThat(dao.getCount(), is(0));
-		
-		dao.get("unknown_id");
 	}
 }

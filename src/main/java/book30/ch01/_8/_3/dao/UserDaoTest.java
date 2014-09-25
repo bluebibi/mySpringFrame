@@ -14,9 +14,9 @@ public class UserDaoTest {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		//class
-		ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+		//ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
 		//xml
-		//ApplicationContext context = new GenericXmlApplicationContext("book30/ch01/_8/_3/applicationContext.xml");
+		ApplicationContext context = new GenericXmlApplicationContext("book30/ch01/_8/_3/applicationContext.xml");
 		UserDao dao = context.getBean("userDao", UserDao.class);
 
 		User user = new User();
@@ -33,6 +33,9 @@ public class UserDaoTest {
 		
 		System.out.println(user2.getPassword());
 		
-		System.out.println(user2.getId() + "조회 성공");	
+		System.out.println(user2.getId() + "조회 성공");
+		
+		Integer a = 100;
+		
 	}
 }

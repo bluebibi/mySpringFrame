@@ -27,9 +27,7 @@ import book30.ch02._4._2.domain.User;
 import book30.ch02._4._2.dao.UserDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="../test-applicationContext.xml")
-//List 2- 20
-//@DirtiesContext
+@ContextConfiguration(locations="../applicationContext.xml")
 public class UserDaoTest {
 	@Autowired
 	private UserDao dao;
@@ -96,4 +94,6 @@ public class UserDaoTest {
 		
 		dao.get("unknown_id");
 	}
+	
+	
 }
