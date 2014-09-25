@@ -87,15 +87,13 @@ public class UserDao {
 
 				return ps;
 			}
-
 		}
 		StatementStrategy st = new AddStatement();
 		jdbcContextWithStatementStrategy(st);
 
 		/* List 3-18
 		StatementStrategy st = new StatementStrategy() {
-			public PreparedStatement makePreparedStatement(Connection c)
-					throws SQLException {
+			public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
 				PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?,?,?)");
 				ps.setString(1, user.getId());
 				ps.setString(2, user.getName());
@@ -122,7 +120,7 @@ public class UserDao {
 				}
 			}
 		);
-		 */
+		*/
 	}
 	
 	public void deleteAll() throws SQLException {

@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import book30.ch01._8._1.dao.UserDao;
 import book30.ch01.domain.User;
 
 
@@ -20,7 +21,7 @@ public class UserDaoTest {
 		UserDao dao = context.getBean("userDao", UserDao.class);
 
 		User user = new User();
-		user.setId("whiteship");
+		user.setId("whites2hip");
 		user.setName("백기선");
 		user.setPassword("married");
 		
@@ -34,8 +35,11 @@ public class UserDaoTest {
 		System.out.println(user2.getPassword());
 		
 		System.out.println(user2.getId() + "조회 성공");
+<<<<<<< HEAD
 		
 		Integer a = 100;
 		
+=======
+>>>>>>> 47980ae357dd0ba1260b847a48538951be920afa
 	}
 }

@@ -12,6 +12,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import book30.ch11.domain.Member;
 import book30.ch11.domain.MemberRowMapper;
@@ -27,31 +29,47 @@ public class NamedParameterMemberDaoImpl {
 	}
 	
 	//addMember
-	public void addMember2(String number, String name, int point) {
+	public void addMember2(final String number, final String name, final int point) {
+		//public int update(String sql, SqlParameterSource paramSource) throws DataAccessException
 		this.namedParameterJdbcTemplate.update("INSERT INTO MEMBERS(NUMBER, NAME, POINT) VALUES(:number, :name, :point)", 
 												new MapSqlParameterSource().addValue("number", number)
 																		   .addValue("name", name)
 																		   .addValue("point", point));
 	}
 	
-	public void addMember3(Map<String, Object> memberMap) {
+	public void addMember3(final Map<String, Object> memberMap) {
+		//public int update(String sql, Map<String,?> paramMap) throws DataAccessException
 		this.namedParameterJdbcTemplate.update("INSERT INTO MEMBERS(NUMBER, NAME, POINT) VALUES(:number, :name, :point)", memberMap);
 	}
 	
-	public void addMember4(Member member) {
+	public void addMember4(final Member member) {
+		//public int update(String sql, SqlParameterSource paramSource) throws DataAccessException
 		this.namedParameterJdbcTemplate.update("INSERT INTO MEMBERS(NUMBER, NAME, POINT) VALUES(:number, :name, :point)", 
 												new BeanPropertySqlParameterSource(member));
 	}
 	
+	//addMemberAndGetKey
+	public int addMemberAndGetKey2(final String number, final String name, final int point) {
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		
+		//public int update(String sql, SqlParameterSource paramSource, KeyHolder generatedKeyHolder) throws DataAccessException
+		namedParameterJdbcTemplate.update("INSERT INTO MEMBERS(NUMBER, NAME, POINT) VALUES(:number, :name, :point)", 
+											new MapSqlParameterSource().addValue("number", number).addValue("name", name).addValue("point", point),
+											keyHolder);
+		return keyHolder.getKey().intValue();
+	}
+	
 	//numMembersOverPoint
-	public int numMembersOverPoint2(int point) {
+	public int numMembersOverPoint2(final int point) {
+		//public <T> T queryForObject(String sql, SqlParameterSource paramSource, Class<T> requiredType) throws DataAccessException
 		return this.namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM MEMBERS WHERE POINT > :point", 
 																new MapSqlParameterSource("point", point), Integer.class);
 	}
 	
 	//getMemberName, List 11-4
-	public String getMemberName2(String number) {
+	public String getMemberName2(final String number) {
 		try {
+			//public <T> T queryForObject(String sql, SqlParameterSource paramSource, Class<T> requiredType) throws DataAccessException
 			return this.namedParameterJdbcTemplate.queryForObject("SELECT NAME FROM MEMBERS WHERE NUMBER = :number", 
 														new MapSqlParameterSource("number", number), String.class);
 		} catch(EmptyResultDataAccessException e) {
@@ -60,8 +78,9 @@ public class NamedParameterMemberDaoImpl {
 	}
 
 	//getMember
-	public Member getMember3(String number) {
+	public Member getMember3(final String number) {
 		try {
+			//public <T> T queryForObject(String sql, SqlParameterSource paramSource, RowMapper<T> rowMapper) throws DataAccessException
 			return this.namedParameterJdbcTemplate.queryForObject("SELECT * FROM MEMBERS WHERE NUMBER = :number", 
 														new MapSqlParameterSource("number", number), 
 														new BeanPropertyRowMapper<Member>(Member.class));
@@ -70,8 +89,9 @@ public class NamedParameterMemberDaoImpl {
 		}
 	}
 	
-	public Member getMember4(String number) {
+	public Member getMember4(final String number) {
 		try {
+			//public <T> T queryForObject(String sql, SqlParameterSource paramSource, RowMapper<T> rowMapper) throws DataAccessException
 			return this.namedParameterJdbcTemplate.queryForObject("SELECT * FROM MEMBERS WHERE NUMBER = :number", 
 														new MapSqlParameterSource("number", number), 
 														this.memberRowMapper);
@@ -80,9 +100,11 @@ public class NamedParameterMemberDaoImpl {
 		}
 	}
 	
-	public Member getMemberById(int id) {
+	//getMemberById
+	public Member getMemberById2(final int id) {
 		try {
-			return this.namedParameterJdbcTemplate.queryForObject("SELECT * FROM MEMBERS WHERE NUMBER = :id", 
+			//public <T> T queryForObject(String sql, SqlParameterSource paramSource, RowMapper<T> rowMapper) throws DataAccessException
+			return this.namedParameterJdbcTemplate.queryForObject("SELECT * FROM MEMBERS WHERE ID = :id", 
 														new MapSqlParameterSource("id", id), 
 														this.memberRowMapper);
 		} catch(EmptyResultDataAccessException e) {
@@ -91,8 +113,9 @@ public class NamedParameterMemberDaoImpl {
 	}
 	
 	//getMemberMap (note: get a single member)
-	public Map<String, Object> getMemberMap2(String number) {
+	public Map<String, Object> getMemberMap2(final String number) {
 		try {
+			//public Map<String,Object> queryForMap(String sql, SqlParameterSource paramSource) throws DataAccessException
 			return this.namedParameterJdbcTemplate.queryForMap("SELECT * FROM MEMBERS WHERE NUMBER = :number", 
 																new MapSqlParameterSource("number", number));
 		} catch(EmptyResultDataAccessException e) {
@@ -101,20 +124,23 @@ public class NamedParameterMemberDaoImpl {
 	}
 	
 	//getMemberList
-	public List<Member> getMemberList3(int point) {
+	public List<Member> getMemberList3(final int point) {
+		//public <T> List<T> query(String sql, SqlParameterSource paramSource, RowMapper<T> rowMapper) throws DataAccessException
 		return this.namedParameterJdbcTemplate.query("SELECT * FROM MEMBERS WHERE POINT > :point", 
 														new MapSqlParameterSource("point", point), 
 														new BeanPropertyRowMapper<Member>(Member.class));
 	}
 	
-	public List<Member> getMemberList4(int point) {
+	public List<Member> getMemberList4(final int point) {
+		//public <T> List<T> query(String sql, SqlParameterSource paramSource, RowMapper<T> rowMapper) throws DataAccessException
 		return this.namedParameterJdbcTemplate.query("SELECT * FROM MEMBERS WHERE POINT > :point", 
 														new MapSqlParameterSource("point", point), 
 														this.memberRowMapper);
 	}
 	
 	//getMemberMapList
-	public List<Map<String, Object>> getMemberMapList2(int point) {
+	public List<Map<String, Object>> getMemberMapList2(final int point) {
+		//public List<Map<String,Object>> queryForList(String sql, SqlParameterSource paramSource) throws DataAccessException
 		return this.namedParameterJdbcTemplate.queryForList("SELECT * FROM MEMBERS WHERE POINT > :point", 
 														new MapSqlParameterSource("point", point));
 	}
@@ -127,7 +153,7 @@ public class NamedParameterMemberDaoImpl {
 			sqlParameterSource[i] = new BeanPropertySqlParameterSource(member);
 			i++;
 		}
-		
+		//public int[] batchUpdate(String sql, SqlParameterSource[] batchArgs)
 		int[] updateCount = this.namedParameterJdbcTemplate.batchUpdate("INSERT INTO MEMBERS(NUMBER, NAME, POINT) VALUES(:number, :name, :point)", sqlParameterSource);
 		return updateCount;
 	}
@@ -142,7 +168,7 @@ public class NamedParameterMemberDaoImpl {
 										.addValue("number", memberMap.get("number"));
 			i++;
 		}
-		
+		//public int[] batchUpdate(String sql, SqlParameterSource[] batchArgs)
 		int[] updateCount = this.namedParameterJdbcTemplate.batchUpdate("UPDATE MEMBERS SET POINT = :point WHERE NUMBER = :number", sqlParameterSource);
 		return updateCount;
 	}

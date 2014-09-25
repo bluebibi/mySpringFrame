@@ -38,6 +38,15 @@ public class MemberService {
 		this.namedParameterMemberDao.addMember4(member);
 	}
 	
+	//addMemberAndGetKey
+	public int addMemberAndGetKey1(String number, String name, int point) {
+		return this.memberDao.addMemberAndGetKey1(number, name, point);
+	}
+	
+	public int addMemberAndGetKey2(String number, String name, int point) {
+		return this.namedParameterMemberDao.addMemberAndGetKey2(number, name, point);
+	}
+	
 	//numMembers
 	public int numMembers() {
 		return this.memberDao.numMembers();
@@ -76,6 +85,15 @@ public class MemberService {
 	
 	public Member getMember4(String number) {
 		return this.namedParameterMemberDao.getMember4(number);
+	}
+	
+	//getMemberById
+	public Member getMemberById1(int id) {
+		return this.memberDao.getMemberById1(id);
+	}
+	
+	public Member getMemberById2(int id) {
+		return this.namedParameterMemberDao.getMemberById2(id);
 	}
 	
 	//getMemberMap
