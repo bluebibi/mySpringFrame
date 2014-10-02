@@ -35,11 +35,5 @@ public class UserDaoTest {
 		System.out.println(user2.getPassword());
 		
 		System.out.println(user2.getId() + "조회 성공");
-<<<<<<< HEAD
-		
-		Integer a = 100;
-		
-=======
->>>>>>> 47980ae357dd0ba1260b847a48538951be920afa
 	}
 }
