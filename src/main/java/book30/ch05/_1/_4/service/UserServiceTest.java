@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import book30.ch05._1._3.dao.UserDao;
+import book30.ch05._1._4.dao.UserDao;
 import book30.ch05.domain.Level;
 import book30.ch05.domain.User;
 import static org.hamcrest.CoreMatchers.is;
