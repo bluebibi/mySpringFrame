@@ -10,7 +10,12 @@
 		<property name="password" value="book" />
 	</bean>
 	
-	<bean id="userDao" class="book30.ch05._1._1.dao.UserDaoJdbc">
+	<bean id="userDao" class="book30.ch05._1._4.dao.UserDaoJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="userService" class="book30.ch05._1._4.service.UserService">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
 </beans>

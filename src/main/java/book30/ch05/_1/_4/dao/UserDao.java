@@ -1,4 +1,4 @@
-package book30.ch05._1._1.dao;
+package book30.ch05._1._4.dao;
 
 import java.util.List;
 
@@ -10,4 +10,5 @@ public interface UserDao {
 	List<User> getAll();
 	void deleteAll();
 	int getCount();
+	public void update(User user1);
 }

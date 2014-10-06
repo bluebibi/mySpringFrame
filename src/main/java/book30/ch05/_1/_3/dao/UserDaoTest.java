@@ -1,4 +1,4 @@
-package book30.ch05._1._1.dao;
+package book30.ch05._1._3.dao;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -123,5 +123,26 @@ public class UserDaoTest {
 		
 		dao.add(user1);
 		dao.add(user1);
+	}
+	
+	@Test
+	public void update() {
+		dao.deleteAll();
+		
+		dao.add(user1);
+		dao.add(user2);
+		
+		user1.setName("오민규");
+		user1.setPassword("springn06");
+		user1.setLevel(Level.GOLD);
+		user1.setLogin(1000);
+		user1.setRecommend(999);
+		dao.update(user1);
+		
+		User user1update = dao.get(user1.getId());
+		checkSameUser(user1, user1update);
+		
+		User user2same = dao.get(user2.getId());
+		checkSameUser(user2, user2same);
 	}
 }

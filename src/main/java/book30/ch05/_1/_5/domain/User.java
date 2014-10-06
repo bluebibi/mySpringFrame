@@ -1,12 +1,8 @@
 package book30.ch05._1._5.domain;
 
-
+import book30.ch05._1._5.domain.User;
 
 public class User {
-	private static final int BASIC = 10;
-	private static final int SILVER = 2;
-	private static final int GOLD = 3;
-	
 	Level level;
 	int login;
 	int recommend;
@@ -22,7 +18,6 @@ public class User {
 		this.level = level;
 		this.login = login;
 		this.recommend = recommend;
-				
 	}
 	
 	public User(String id, String name, String password) {
@@ -32,6 +27,15 @@ public class User {
 	}
 	
 	public User() {
+	}
+	
+	public void upgradeLevel() {
+		Level nextLevel = this.level.nextLevel();
+		if (nextLevel == null) {
+			throw new IllegalStateException(this.level+ "is not able to be upgraded."); 
+		} else {
+			this.level = nextLevel;
+		}
 	}
 	
 	public String getId() {
@@ -76,16 +80,4 @@ public class User {
 	public void setRecommend(int recommend) {
 		this.recommend = recommend;
 	}
-	
-	public void upgradeLevel() {
-		Level nextLevel = this.level.nextLevel();
-		if( nextLevel == null) {
-			throw new IllegalStateException(this.level + "은 업그레이드가 불가능합니다.");
-		}
-		else {
-			this.level = nextLevel;
-		}
-	}
-	
-	
 }

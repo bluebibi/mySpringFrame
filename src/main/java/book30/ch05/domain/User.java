@@ -1,12 +1,6 @@
 package book30.ch05.domain;
 
 public class User {
-	/*
-	private static final int BASIC = 10;
-	private static final int SILVER = 2;
-	private static final int GOLD = 3;
-	*/
-	
 	Level level;
 	int login;
 	int recommend;

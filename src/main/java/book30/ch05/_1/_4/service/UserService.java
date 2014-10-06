@@ -1,8 +1,8 @@
-package book30.ch05._1._1.service;
+package book30.ch05._1._4.service;
 
 import java.util.List;
 
-import book30.ch05._1._1.dao.UserDao;
+import book30.ch05._1._4.dao.UserDao;
 import book30.ch05.domain.Level;
 import book30.ch05.domain.User;
 
@@ -17,18 +17,15 @@ public class UserService {
 		List<User> users = userDao.getAll();
 		for(User user: users) {
 			Boolean changed = null;
-			if( user.getLevel() == Level.BASIC && user.getLogin() >= 50) {
+			if (user.getLevel() == Level.BASIC && user.getLogin() >= 50) {
 				user.setLevel(Level.SILVER);
 				changed = true;
-			}
-			else if ( user.getLevel() == Level.SILVER && user.getRecommend() >=30 ) {
+			} else if (user.getLevel() == Level.SILVER && user.getRecommend() >=30) {
 				user.setLevel(Level.GOLD);
 				changed = true;
-			}
-			else if( user.getLevel() == Level.GOLD) {
+			} else if( user.getLevel() == Level.GOLD) {
 				changed = false;
-			}
-			else {
+			} else {
 				changed = false;
 			}
 			
@@ -37,7 +34,7 @@ public class UserService {
 	}
 	
 	public void add(User user) {
-		if ( user.getLevel() == null)
+		if (user.getLevel() == null)
 			user.setLevel(Level.BASIC);
 		userDao.add(user);
 	}
