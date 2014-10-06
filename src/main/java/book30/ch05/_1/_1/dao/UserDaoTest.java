@@ -8,7 +8,6 @@ import javax.sql.DataSource;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
@@ -46,11 +45,8 @@ public class UserDaoTest {
 	
 	@Test
 	public void addAndGet() throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		
 		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
-		
 		
 		dao.add(user1);
 		dao.add(user2);
@@ -61,12 +57,10 @@ public class UserDaoTest {
 		
 		User userget2 = dao.get(user2.getId());
 		checkSameUser(userget2, user2);
-				
 	}
 	
 	@Test
 	public void count() throws SQLException, ClassNotFoundException {
-				
 		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
 		
@@ -82,7 +76,6 @@ public class UserDaoTest {
 	
 	@Test(expected=EmptyResultDataAccessException.class)
 	public void getUserFailure() throws SQLException, ClassNotFoundException {
-		
 		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
 		
@@ -141,8 +134,7 @@ public class UserDaoTest {
 		try {
 			dao.add(user1);
 			dao.add(user1);
-		}
-		catch(DuplicateKeyException ex) {
+		} catch(DuplicateKeyException ex) {
 			SQLException sqlEx = (SQLException)ex.getRootCause();
 			SQLExceptionTranslator set = new SQLErrorCodeSQLExceptionTranslator(this.datasource);
 			

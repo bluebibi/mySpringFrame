@@ -1,11 +1,11 @@
 package book30.ch05._1._1.domain;
 
-
-
 public class User {
+	/*
 	private static final int BASIC = 10;
 	private static final int SILVER = 2;
 	private static final int GOLD = 3;
+	*/
 	
 	Level level;
 	int login;
@@ -22,7 +22,6 @@ public class User {
 		this.level = level;
 		this.login = login;
 		this.recommend = recommend;
-				
 	}
 	
 	public User(String id, String name, String password) {
@@ -76,6 +75,4 @@ public class User {
 	public void setRecommend(int recommend) {
 		this.recommend = recommend;
 	}
-	
-	
 }
