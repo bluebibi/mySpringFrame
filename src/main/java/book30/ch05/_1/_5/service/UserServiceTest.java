@@ -17,7 +17,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-
 import static book30.ch05._1._5.service.UserService.MIN_LOGCOUNT_FOR_SILVER;
 import static book30.ch05._1._5.service.UserService.MIN_RECCOMEND_FOR_GOLD;
 

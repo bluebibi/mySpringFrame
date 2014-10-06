@@ -8,11 +8,8 @@ import javax.sql.DataSource;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
-import org.springframework.jdbc.support.SQLExceptionTranslator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.junit.Before;
@@ -46,11 +43,8 @@ public class UserDaoTest {
 	
 	@Test
 	public void addAndGet() throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		
 		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
-		
 		
 		dao.add(user1);
 		dao.add(user2);
@@ -66,7 +60,6 @@ public class UserDaoTest {
 	
 	@Test
 	public void count() throws SQLException, ClassNotFoundException {
-				
 		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
 		
@@ -82,7 +75,6 @@ public class UserDaoTest {
 	
 	@Test(expected=EmptyResultDataAccessException.class)
 	public void getUserFailure() throws SQLException, ClassNotFoundException {
-		
 		dao.deleteAll();
 		assertThat(dao.getCount(), is(0));
 		
@@ -124,7 +116,6 @@ public class UserDaoTest {
 		assertThat(user1.getRecommend(), is(user2.getRecommend()));
 	}
 	
-	//@Test(expected=DataAccessException.class)
 	@Test(expected=DuplicateKeyException.class)
 	public void duplicateKey() {
 		
@@ -135,26 +126,11 @@ public class UserDaoTest {
 	}
 	
 	@Test
-	public void sqlExceptionTranslate() {
-		dao.deleteAll();
-		
-		try {
-			dao.add(user1);
-			dao.add(user1);
-		}
-		catch(DuplicateKeyException ex) {
-			SQLException sqlEx = (SQLException)ex.getRootCause();
-			SQLExceptionTranslator set = new SQLErrorCodeSQLExceptionTranslator(this.datasource);
-			
-			//assertThat(set.translate(null, null, sqlEx), is(DuplicateKeyException.class));
-		}
-	}
-	
-	@Test
 	public void update() {
 		dao.deleteAll();
 		
 		dao.add(user1);
+		dao.add(user2);
 		
 		user1.setName("오민규");
 		user1.setPassword("springn06");
@@ -165,5 +141,8 @@ public class UserDaoTest {
 		
 		User user1update = dao.get(user1.getId());
 		checkSameUser(user1, user1update);
+		
+		User user2same = dao.get(user2.getId());
+		checkSameUser(user2, user2same);
 	}
 }

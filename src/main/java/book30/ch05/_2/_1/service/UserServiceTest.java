@@ -16,10 +16,9 @@ import book30.ch05._2._1.dao.UserDao;
 import book30.ch05._2._1.domain.Level;
 import book30.ch05._2._1.domain.User;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
-
-
 import static org.junit.Assert.fail;
 import static book30.ch05._2._1.service.UserService.MIN_LOGCOUNT_FOR_SILVER;
 import static book30.ch05._2._1.service.UserService.MIN_RECCOMEND_FOR_GOLD;
@@ -100,18 +99,18 @@ public class UserServiceTest {
 	
 	@Test
 	public void upgradeAllOrNothing() throws Exception{
-		UserService testUserService = new TestUserService(users.get(3).getId());
+		TestUserService testUserService = new TestUserService(users.get(3).getId());
 		testUserService.setUserDao(this.userDao);
-		testUserService.setDataSource(this.dataSource);
 		
 		userDao.deleteAll();
-		for(User user : users) userDao.add(user);
+
+		for (User user : users) userDao.add(user);
 		
 		try {
 			testUserService.upgradeLevels();
 			fail("TestUserServiceException expected");
-		}
-		catch(TestUserServiceException e) {
+		} catch(TestUserServiceException e) {
+			assertThat(e, isA(TestUserServiceException.class));
 		}
 		
 		checkLevelUpgraded(users.get(1), false);
@@ -125,11 +124,12 @@ public class UserServiceTest {
 		}
 		
 		protected void upgradeLevel(User user) {
-			if ( user.getId().equals(this.id) ) throw new TestUserServiceException();
+			if (user.getId().equals(this.id)) throw new TestUserServiceException();
 			super.upgradeLevel(user);
 		}
 	}
 	
 	static class TestUserServiceException extends RuntimeException {
+		
 	}
 }

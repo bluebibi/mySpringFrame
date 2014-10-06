@@ -22,8 +22,8 @@ import static org.junit.Assert.assertThat;
 
 
 import static org.junit.Assert.fail;
-import static book30.ch05._2._1.service.UserService.MIN_LOGCOUNT_FOR_SILVER;
-import static book30.ch05._2._1.service.UserService.MIN_RECCOMEND_FOR_GOLD;
+import static book30.ch05._2._1.service.TestUserService.MIN_LOGCOUNT_FOR_SILVER;
+import static book30.ch05._2._1.service.TestUserService.MIN_RECCOMEND_FOR_GOLD;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

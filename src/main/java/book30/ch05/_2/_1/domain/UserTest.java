@@ -1,4 +1,4 @@
-package book30.ch05._1._5.domain;
+package book30.ch05._2._1.domain;
 
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.ContextConfiguration;
