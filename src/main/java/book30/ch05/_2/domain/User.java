@@ -1,6 +1,6 @@
-package book30.ch05._2._1.domain;
+package book30.ch05._2.domain;
 
-import book30.ch05._2._1.domain.User;
+import book30.ch05._2.domain.User;
 
 public class User {
 	Level level;

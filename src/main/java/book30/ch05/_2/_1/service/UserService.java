@@ -3,8 +3,8 @@ package book30.ch05._2._1.service;
 import java.util.List;
 
 import book30.ch05._2._1.dao.UserDao;
-import book30.ch05._2._1.domain.Level;
-import book30.ch05._2._1.domain.User;
+import book30.ch05._2.domain.Level;
+import book30.ch05._2.domain.User;
 
 public class UserService {
 	public static final int MIN_LOGCOUNT_FOR_SILVER = 50;

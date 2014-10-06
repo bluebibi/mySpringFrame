@@ -2,7 +2,7 @@ package book30.ch05._2._3.dao;
 
 import java.util.List;
 
-import book30.ch05._2._3.domain.User;
+import book30.ch05._2.domain.User;
 
 public interface UserDao {
 	void add(User user);

@@ -1,4 +1,4 @@
-package book30.ch05._2._3.service;
+package book30.ch05._2._4.service;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import book30.ch05._2._3.dao.UserDao;
+import book30.ch05._2._4.dao.UserDao;
 import book30.ch05._2.domain.Level;
 import book30.ch05._2.domain.User;
 import static org.hamcrest.CoreMatchers.is;
@@ -19,8 +19,8 @@ import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
-import static book30.ch05._2._3.service.UserService.MIN_LOGCOUNT_FOR_SILVER;
-import static book30.ch05._2._3.service.UserService.MIN_RECCOMEND_FOR_GOLD;
+import static book30.ch05._2._4.service.UserService.MIN_LOGCOUNT_FOR_SILVER;
+import static book30.ch05._2._4.service.UserService.MIN_RECCOMEND_FOR_GOLD;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="../applicationContext.xml")

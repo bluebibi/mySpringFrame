@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import book30.ch05._2._1.dao.UserDao;
-import book30.ch05._2._1.domain.Level;
-import book30.ch05._2._1.domain.User;
+import book30.ch05._2.domain.Level;
+import book30.ch05._2.domain.User;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.CoreMatchers.notNullValue;

@@ -1,4 +1,4 @@
-package book30.ch05._2._3.dao;
+package book30.ch05._2._4.dao;
 
 import java.sql.*;
 import java.util.List;
