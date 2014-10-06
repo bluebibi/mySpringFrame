@@ -1,4 +1,4 @@
-package book30.ch05._1._1.domain;
+package book30.ch05.domain;
 
 public enum Level {
 	BASIC(1), SILVER(2), GOLD(3);

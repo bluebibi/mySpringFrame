@@ -11,8 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import book30.ch05._1._1.dao.UserDao;
-import book30.ch05._1._1.domain.Level;
-import book30.ch05._1._1.domain.User;
+import book30.ch05.domain.Level;
+import book30.ch05.domain.User;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
