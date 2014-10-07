@@ -10,8 +10,10 @@ import book30.ch05._2._4.dao.UserDao;
 import book30.ch05._2.domain.Level;
 import book30.ch05._2.domain.User;
 
-
 public class UserService {
+	public static final int MIN_LOGCOUNT_FOR_SILVER = 50;
+	public static final int MIN_RECCOMEND_FOR_GOLD = 30;
+
 	UserDao userDao;
 	
 	private PlatformTransactionManager transactionManager;
@@ -19,7 +21,6 @@ public class UserService {
 	public void setTransactionManager(PlatformTransactionManager transactionManager) {
 		this.transactionManager = transactionManager;
 	}
-
 
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
@@ -31,7 +32,7 @@ public class UserService {
 		try {
 			List<User> users = userDao.getAll();
 			for(User user: users) {
-				if ( canUpgradeLevel(user)) {
+				if (canUpgradeLevel(user)) {
 					upgradeLevel(user);
 				}
 			}
@@ -41,9 +42,6 @@ public class UserService {
 			throw e;
 		}
 	}
-
-	public static final int MIN_LOGCOUNT_FOR_SILVER = 50;
-	public static final int MIN_RECCOMEND_FOR_GOLD = 30;
 
 	private boolean canUpgradeLevel(User user) {
 		Level currentLevel = user.getLevel();

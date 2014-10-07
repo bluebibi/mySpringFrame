@@ -3,6 +3,8 @@ package book30.ch05._2._3.service;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -30,7 +32,7 @@ public class UserServiceTest {
 	@Autowired
 	UserDao userDao;
 	@Autowired
-	PlatformTransactionManager transactionManager;
+	DataSource dataSource;
 	
 	List<User> users; //테스트 픽스처
 	
@@ -99,7 +101,7 @@ public class UserServiceTest {
 	public void upgradeAllOrNothing() throws Exception{
 		UserService testUserService = new TestUserService(users.get(3).getId());
 		testUserService.setUserDao(this.userDao);
-		testUserService.setTransactionManager(transactionManager);
+		testUserService.setDataSource(this.dataSource);
 		
 		userDao.deleteAll();
 		for(User user : users) userDao.add(user);
