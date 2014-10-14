@@ -70,10 +70,9 @@ public class UserServiceTest {
 	
 	private void checkLevelUpgraded(User user, boolean upgraded) {
 		User userUpdate = userDao.get(user.getId());
-		if ( upgraded) {
+		if (upgraded) {
 			assertThat(userUpdate.getLevel(), is(user.getLevel().nextLevel()));
-		}
-		else {
+		} else {
 			assertThat(userUpdate.getLevel(), is(user.getLevel()));
 		}
 	}
@@ -98,7 +97,7 @@ public class UserServiceTest {
 	
 	
 	@Test
-	public void upgradeAllOrNothing() throws Exception{
+	public void upgradeAllOrNothing() {
 		TestUserService testUserService = new TestUserService(users.get(3).getId());
 		testUserService.setUserDao(this.userDao);
 		
