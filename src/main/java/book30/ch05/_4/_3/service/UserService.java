@@ -1,4 +1,4 @@
-package book30.ch05._4._4.service;
+package book30.ch05._4._3.service;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import book30.ch05._4._4.dao.UserDao;
-import book30.ch05._4._4.domain.Level;
-import book30.ch05._4._4.domain.User;
+import book30.ch05._4._3.dao.UserDao;
+import book30.ch05._4._3.domain.Level;
+import book30.ch05._4._3.domain.User;
 
 public class UserService {
 	public static final int MIN_LOGCOUNT_FOR_SILVER = 50;

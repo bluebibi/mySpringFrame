@@ -1,8 +1,8 @@
-package book30.ch05._4._4.dao;
+package book30.ch05._4._3.dao;
 
 import java.util.List;
 
-import book30.ch05._4._4.domain.User;
+import book30.ch05._4._3.domain.User;
 
 public interface UserDao {
 	void add(User user);
