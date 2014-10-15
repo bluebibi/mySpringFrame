@@ -78,7 +78,7 @@ public class UserService {
 	
 	private void sendUpgradeEMail(User user) {
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
-		mailMessage.setTo(user.getEmail());
+		mailMessage.setTo("yh21.han@gmail.com");
 		mailMessage.setFrom("useradmin@ksug.org");
 		mailMessage.setSubject("Upgrade 안내");
 		mailMessage.setText("사용자님의 등급이 " + user.getLevel().name());
