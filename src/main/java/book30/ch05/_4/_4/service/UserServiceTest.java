@@ -83,7 +83,11 @@ public class UserServiceTest {
 
 		public void send(SimpleMailMessage[] mailMessage) throws MailException {
 		}
+		
+		
 	}
+	
+	
 
 
 	private void checkLevelUpgraded(User user, boolean upgraded) {
