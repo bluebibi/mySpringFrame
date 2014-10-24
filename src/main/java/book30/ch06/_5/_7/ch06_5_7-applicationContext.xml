@@ -23,20 +23,6 @@
 		<aop:advisor advice-ref="transactionAdvice" pointcut="execution(* *..*Service.upgrade*(..))" />
 	</aop:config>
 	-->
-		
-	<!--
-	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
-	
-	
-	<bean id="transactionPointcut" class="org.springframework.aop.aspectj.AspectJExpressionPointcut">
-		<property name="expression" value="execution(* *..*Service.upgrade*(..))" />
-	</bean>
-			
-	<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
-		<property name="advice" ref="transactionAdvice" />
-		<property name="pointcut" ref="transactionPointcut" />
-	</bean>
-	-->	
 	
 	<bean id="userService" class="book30.ch06._5._7.service.UserServiceImpl">
 		<property name="userDao" ref="userDao" />

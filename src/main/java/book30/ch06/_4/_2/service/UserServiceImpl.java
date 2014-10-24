@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 		List<User> users = userDao.getAll();
 		for (User user : users) {
 			if (canUpgradeLevel(user)) {
-				upgradeLevel(user);
+				this.upgradeLevel(user);
 			}
 		}
 	}

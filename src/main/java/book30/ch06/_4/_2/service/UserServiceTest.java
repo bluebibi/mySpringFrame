@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,8 +31,12 @@ import book30.ch06.domain.User;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"../ch06_4_2-applicationContext.xml", "../../../ch06-applicationContext.xml"})
 public class UserServiceTest {
-	@Autowired UserService userService;	
-	@Autowired UserServiceImpl userServiceImpl;
+	@Autowired
+	UserService userService;
+	
+	@Autowired 
+	UserServiceImpl userServiceImpl;
+	
 	@Autowired UserDao userDao;
 	@Autowired MailSender mailSender; 
 	@Autowired ApplicationContext context;
@@ -48,8 +54,23 @@ public class UserServiceTest {
 				);
 	}
 
-	@Test 
+	@Test
 	public void upgradeLevels() throws Exception {
+		userDao.deleteAll();
+		for(User user: users)
+			userDao.add(user);
+		
+		userService.upgradeLevels();
+		
+		checkLevelUpgraded(users.get(0), false);
+		checkLevelUpgraded(users.get(1), true);
+		checkLevelUpgraded(users.get(2), false);
+		checkLevelUpgraded(users.get(3), true);
+		checkLevelUpgraded(users.get(4), false);
+	}
+	
+	@Test 
+	public void upgradeLevelsWithMockDao() throws Exception {
 		UserServiceImpl userServiceImpl = new UserServiceImpl(); 
 		
 		MockUserDao mockUserDao = new MockUserDao(this.users);  

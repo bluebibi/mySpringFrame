@@ -50,8 +50,23 @@ public class UserServiceTest {
 				);
 	}
 
-	@Test 
+	@Test
 	public void upgradeLevels() throws Exception {
+		userDao.deleteAll();
+		for(User user: users)
+			userDao.add(user);
+		
+		userService.upgradeLevels();
+		
+		checkLevelUpgraded(users.get(0), false);
+		checkLevelUpgraded(users.get(1), true);
+		checkLevelUpgraded(users.get(2), false);
+		checkLevelUpgraded(users.get(3), true);
+		checkLevelUpgraded(users.get(4), false);
+	}
+	
+	@Test 
+	public void upgradeLevelsWithMockDao() throws Exception {
 		UserServiceImpl userServiceImpl = new UserServiceImpl(); 
 		
 		MockUserDao mockUserDao = new MockUserDao(this.users);  
@@ -175,9 +190,6 @@ public class UserServiceTest {
 	}
 	
 	static class TestUserServiceException extends RuntimeException {
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = -5598340053503834346L;
 	}
 }
