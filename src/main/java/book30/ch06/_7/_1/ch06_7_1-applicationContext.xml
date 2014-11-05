@@ -14,29 +14,6 @@
 
 	<tx:annotation-driven/>
 	
-	<!--
-	<bean id="transactionAdvice" class="org.springframework.transaction.interceptor.TransactionInterceptor">
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="transactionAttributes">
-			<props>
-				<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
-				<prop key="*">PROPAGATION_REQUIRED</prop>
-			</props>
-		</property>
-	</bean>
-	-->
-	
-	<tx:advice id="transactionAdvice">
-		<tx:attributes>
-			<tx:method name="get*" read-only="true" />
-			<tx:method name="*" />
-		</tx:attributes>
-	</tx:advice>
-	
-	<aop:config>
-		<aop:advisor advice-ref="transactionAdvice" pointcut="bean(testUserService)" />
-	</aop:config>
-		
 	<bean id="userService" class="book30.ch06._7._1.service.UserServiceImpl">
 		<property name="userDao" ref="userDao" />
 		<property name="mailSender" ref="mailSender" />
